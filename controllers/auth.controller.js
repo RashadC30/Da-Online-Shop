@@ -1,34 +1,36 @@
-const User = require('../models/user.model');
-const authUtil = require('../utils/authentication');
-const validation = require('../utils/validation');
-const sessionFlash = require('../utils/session-flash');
+const User = require("../models/user.model");
+const authUtil = require("../utils/authentication");
+const validation = require("../utils/validation");
+const sessionFlash = require("../utils/session-flash");
 
 function getSignup(req, res) {
   let sessionData = sessionFlash.getSessionData(req);
 
   if (!sessionData) {
     sessionData = {
-      email: '',
-      confirmEmail: '',
-      password: '',
-      fullname: '',
-      street: '',
-      postal: '',
-      city: '',
+      email: "",
+      confirmEmail: "",
+      password: "",
+      firstname: "",
+      lastname: "",
+      street: "",
+      zip: "",
+      city: "",
     };
   }
 
-  res.render('customer/auth/signup', { inputData: sessionData });
+  res.render("customer/auth/signup", { inputData: sessionData });
 }
 
 async function signup(req, res, next) {
   const enteredData = {
     email: req.body.email,
-    confirmEmail: req.body['confirm-email'],
+    confirmEmail: req.body["confirm-email"],
     password: req.body.password,
-    fullname: req.body.fullname,
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
     street: req.body.street,
-    postal: req.body.postal,
+    zip: req.body.zip,
     city: req.body.city,
   };
 
@@ -36,22 +38,23 @@ async function signup(req, res, next) {
     !validation.userDetailsAreValid(
       req.body.email,
       req.body.password,
-      req.body.fullname,
+      req.body.firstname,
+      req.body.lastname,
       req.body.street,
-      req.body.postal,
+      req.body.zip,
       req.body.city
     ) ||
-    !validation.emailIsConfirmed(req.body.email, req.body['confirm-email'])
+    !validation.emailIsConfirmed(req.body.email, req.body["confirm-email"])
   ) {
     sessionFlash.flashDataToSession(
       req,
       {
         errorMessage:
-          'Please check your input. Password must be at least 6 character slong, postal code must be 5 characters long.',
+          "Please check your input. Password must be at least 6 character slong, zip code must be 5 characters long.",
         ...enteredData,
       },
       function () {
-        res.redirect('/signup');
+        res.redirect("/signup");
       }
     );
     return;
@@ -60,9 +63,10 @@ async function signup(req, res, next) {
   const user = new User(
     req.body.email,
     req.body.password,
-    req.body.fullname,
+    req.body.firstname,
+    req.body.lastname,
     req.body.street,
-    req.body.postal,
+    req.body.zip,
     req.body.city
   );
 
@@ -73,11 +77,11 @@ async function signup(req, res, next) {
       sessionFlash.flashDataToSession(
         req,
         {
-          errorMessage: 'User exists already! Try logging in instead!',
+          errorMessage: "User exists already! Try logging in instead!",
           ...enteredData,
         },
         function () {
-          res.redirect('/signup');
+          res.redirect("/signup");
         }
       );
       return;
@@ -89,7 +93,7 @@ async function signup(req, res, next) {
     return;
   }
 
-  res.redirect('/login');
+  res.redirect("/login");
 }
 
 function getLogin(req, res) {
@@ -97,12 +101,12 @@ function getLogin(req, res) {
 
   if (!sessionData) {
     sessionData = {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
     };
   }
 
-  res.render('customer/auth/login', { inputData: sessionData });
+  res.render("customer/auth/login", { inputData: sessionData });
 }
 
 async function login(req, res, next) {
@@ -117,14 +121,14 @@ async function login(req, res, next) {
 
   const sessionErrorData = {
     errorMessage:
-      'Invalid credentials - please double-check your email and password!',
+      "Invalid credentials - please double-check your email and password!",
     email: user.email,
     password: user.password,
   };
 
   if (!existingUser) {
     sessionFlash.flashDataToSession(req, sessionErrorData, function () {
-      res.redirect('/login');
+      res.redirect("/login");
     });
     return;
   }
@@ -135,19 +139,19 @@ async function login(req, res, next) {
 
   if (!passwordIsCorrect) {
     sessionFlash.flashDataToSession(req, sessionErrorData, function () {
-      res.redirect('/login');
+      res.redirect("/login");
     });
     return;
   }
 
   authUtil.createUserSession(req, existingUser, function () {
-    res.redirect('/');
+    res.redirect("/");
   });
 }
 
 function logout(req, res) {
   authUtil.destroyUserAuthSession(req);
-  res.redirect('/login');
+  res.redirect("/login");
 }
 
 module.exports = {
