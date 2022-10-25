@@ -25,12 +25,12 @@ const cartItemUpdateFormElements = document.querySelectorAll(".cart-item-managem
         },
       });
     } catch (error) {
-      alert("Something went wrong!");
+      alert("Something went wrong");
       return;
     }
   
     if (!response.ok) {
-      alert("Something went wrong!");
+      alert("Sorry, please try again");
       return;
     }
   

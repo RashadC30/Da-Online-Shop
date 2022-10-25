@@ -24,7 +24,7 @@ async function addToCart() {
   }
   
   if (!response.ok) {
-    alert("Something went wrong!");
+    alert("Sorry, please try again");
     return;
   }
 

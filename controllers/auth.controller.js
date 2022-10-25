@@ -50,7 +50,7 @@ async function signup(req, res, next) {
       req,
       {
         errorMessage:
-          "Please check your input. Password must be at least 6 character slong, zip code must be 5 characters long.",
+          "Insorrect Input. Please check your password that it is between 7 and 16 characters and/or zip code is 5 characters long.",
         ...enteredData,
       },
       function () {
@@ -77,7 +77,7 @@ async function signup(req, res, next) {
       sessionFlash.flashDataToSession(
         req,
         {
-          errorMessage: "User exists already! Try logging in instead!",
+          errorMessage: "Sorry, this User already exists. Please try logging in instead",
           ...enteredData,
         },
         function () {
@@ -121,7 +121,7 @@ async function login(req, res, next) {
 
   const sessionErrorData = {
     errorMessage:
-      "Invalid credentials - please double-check your email and password!",
+      "Credentials are invalid. Please double-check your email and/or password!",
     email: user.email,
     password: user.password,
   };
