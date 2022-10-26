@@ -17,7 +17,6 @@ const baseRoutes = require("./routes/base.routes");
 const adminRoutes = require("./routes/admin.routes");
 const cartRoutes = require("./routes/cart.routes");
 const ordersRoutes = require("./routes/orders.routes");
-const notFoundHandler = require("./middlewares/not-found");
 
 const app = express();
 
