@@ -5,28 +5,6 @@
 html {
     font-family: "Oswald", sans-serif;
 
-    --color-gray-50: rgb(243, 236, 230);
-  --color-gray-100: rgb(207, 201, 195);
-  --color-gray-300: rgb(99, 92, 86);
-  --color-gray-400: rgb(70, 65, 60);
-  --color-gray-500: rgb(37, 34, 31);
-  --color-gray-600: rgb(32, 29, 26);
-  --color-gray-700: rgb(31, 26, 22);
-
-  --color-primary-50: rgb(253, 224, 200);
-  --color-primary-100: rgb(253, 214, 183);
-  --color-primary-200: rgb(250, 191, 143);
-  --color-primary-400: rgb(223, 159, 41);
-  --color-primary-500: rgb(212, 136, 14);
-  --color-primary-700: rgb(212, 120, 14);
-  --color-primary-200-contrast: rgb(100, 46, 2);
-  --color-primary-500-contrast: white;
-
-  --color-error-100: rgb(255, 192, 180);
-  --color-error-500: rgb(199, 51, 15);
-
-  --color-primary-500-bg: rgb(63, 60, 58);
-
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-4: 1rem;
@@ -40,8 +18,8 @@ html {
 }
 
 body {
-    background-color: var(--color-gray-400);
-    color: var(--color-gray-100);
+    background: linear-gradient(35deg, #8BBCCC, #F8C4B4, #FFCB42);
+    color: #4C3A51;
     margin: 0;
 }
 
@@ -59,23 +37,23 @@ ul, ol {
 
 a {
     text-decoration: none;
-    color: var(--color-primary-500);
+    color:#EE6983;
 }
 
 .btn {
     font-family: "Mukta" sans-serif;
-    color: var(--color-primary-100);
-    background-color: brown;
+    color: #06283D;
+    background-color: #C47AFF;
     padding: 8px;
     cursor: pointer;
-    border: solid var(--color-primary-100);
+    border: solid #06283D;
     border-radius: var(--border-radius-small);
 }
 
 .btn:hover, .btn:active {
-    color: brown;
-    background-color: var(--color-primary-100);
-    border: solid brown;
+    color: #D8D8D8;
+    background-color: #002B5B;
+    border: solid #D8D8D8;
 }
 
 btn-alt {
@@ -109,6 +87,6 @@ btn-alt:hover, btn-alt:active {
     margin-left: var(--space-2);
     padding: 0.2rem var(--space-4);
     border-radius: 10rem;
-    background-color: darkgoldenrod;
-    color: darkgray;
+    background-color: #9C2C77;
+    color: #FFF5E4;
 }

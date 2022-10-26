@@ -1,7 +1,7 @@
 .cart-item {
     display: flex;
     flex-direction: column;
-    background-color: brown;
+    background-color: #FFD384;
     padding: var(--space-4);
     border-radius: var(--border-radius-medium);
     margin: var(--space-4) 0;
@@ -19,7 +19,7 @@
 
 .cart-product-price {
     font-style: italic;
-    color: cadetblue;
+    color: #9C2C77;
 }
 
 #cart-total {
@@ -32,7 +32,7 @@
 #cart-total p {
     font-size: 1.5rem;
     font-weight: bold;
-    color: darkgoldenrod;
+    color: #DD5353;
 }
 
 #cart-total #cart-total-check {

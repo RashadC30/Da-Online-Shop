@@ -14,8 +14,8 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 3px solid goldenrod;
-    background-color: brown;
+    border-bottom: 3px solid #9C2C77;
+    background-color: #DBC8AC;
 }
 
 #main-header nav {
@@ -44,9 +44,9 @@ main {
     font-family: "PT Serif", serif;
     font-size: 1.75rem;
     color: goldenrod;
-    border: 3px solid goldenrod;
+    border: 3px solid #EDDBC0;
     border-radius: var(--border-radius-small);
-    background-color:brown;
+    background-color:#B73E3E;
     padding: 0 var(--space-4);
 }
 
@@ -65,7 +65,7 @@ main {
 #mobile-menu-btn span {
     width: 2.25rem;
     height: 0.25rem;
-    background-color: gold;
+    background-color: #B73E3E;
 }
 
 #mobile-menu {
@@ -74,7 +74,7 @@ main {
     left: 0;
     height: calc(100vh - 6rem);
     width: 100%;
-    background-color:cadetblue ;
+    background-color:#FFC4C4;
     display: none;
     flex-direction: column;
     align-items: center;
@@ -92,7 +92,7 @@ main {
 
 #mobile-menu .nav-items a {
     font-size: 1.75rem;
-    color: bisque;
+    color: #472D2D;
 }
 
 @media (min-width: 48rem) {
@@ -123,11 +123,17 @@ main {
     .nav-items button {
     font-family: "PT Serif", serif ;
     font-size: 1rem;
-    color: goldenrod;
-    border: 3px solid goldenrod;
+    color: #DBC8AC;
+    border: 3px solid #FFC4C4;
     border-radius: var(--border-radius-small);
-    background-color:brown ;
+    background-color:#9C2C77 ;
     padding: 0 var(--space-4);
+    }
+
+    .nav-items button:hover {
+        color: #9C2C77;
+        border: 3px solid #B73E3E;
+        background-color: #FFC4C4;
     }
 
     .nav-items a {
@@ -135,6 +141,6 @@ main {
         border-radius: var(--border-radius-small);
     }
     .nav-items a:hover, .nav-items a:active {
-        background-color: chocolate;
+        background-color: #F1A661;
     }
 }
