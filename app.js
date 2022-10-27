@@ -18,9 +18,13 @@ const adminRoutes = require("./routes/admin.routes");
 const cartRoutes = require("./routes/cart.routes");
 const ordersRoutes = require("./routes/orders.routes");
 
-const app = express();
+let port = 3000
 
-const port = process.env.PORT || 3000;
+if (process.env.PORT) {
+  port =process.env.PORT
+}
+
+const app = express();
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -51,7 +55,7 @@ app.use("/admin", protectRoutesMiddleware, adminRoutes);
 app.use(notFoundHandlerMiddleware);
 app.use(errorHandlerMiddleware);
 
-db.connectToDatabase().then(function () { app.listen(3000);
+db.connectToDatabase().then(function () { app.listen(port);
 })
   .catch(function (error) {console.log("Failed to connect to the database");
     console.log(error);
